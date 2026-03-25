@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>🌸 Anshu's Wishlist | Auto-fetch Product Images</title>
+    <title>🌸 Anshu's Wishlist | Curated by Anshika</title>
     <!-- Google Fonts & simple CSS reset -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Include axios for easy fetch, and he for HTML entities -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -129,8 +127,8 @@
             transform: scale(1.02);
         }
 
-        .card-img .img-fallback, .card-img .img-loading {
-            font-size: 2.5rem;
+        .card-img .img-fallback {
+            font-size: 3rem;
             color: #e6a1be;
             display: flex;
             flex-direction: column;
@@ -140,11 +138,6 @@
             background: #ffeef4;
             text-align: center;
             padding: 1rem;
-        }
-
-        .img-loading i {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
         }
 
         .card-content {
@@ -291,24 +284,6 @@
             color: #e2a1bb;
         }
 
-        .creator-note {
-            text-align: center;
-            font-size: 0.7rem;
-            color: #e5a1bc;
-            margin-top: 0.5rem;
-            background: #fff0f5;
-            display: inline-block;
-            width: auto;
-            padding: 0.2rem 1rem;
-            border-radius: 40px;
-            cursor: default;
-        }
-
-        .creator-container {
-            text-align: center;
-            margin-bottom: 0.5rem;
-        }
-
         @media (max-width: 640px) {
             .wishlist-header h1 {
                 font-size: 3rem;
@@ -321,6 +296,151 @@
                 font-size: 0.8rem;
             }
         }
+
+        /* HIDDEN ADMIN PANEL - SECRET ACCESS ONLY */
+        .secret-admin-trigger {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 999;
+        }
+
+        .admin-panel-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .admin-panel {
+            background: linear-gradient(145deg, #fff5fa, #ffeef4);
+            border-radius: 2rem;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            border: 2px solid #ffc0d6;
+            box-shadow: 0 25px 40px rgba(160, 70, 100, 0.3);
+            position: relative;
+        }
+
+        .admin-panel h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #c44b7c;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .admin-panel input, .admin-panel textarea {
+            width: 100%;
+            padding: 10px 15px;
+            margin: 8px 0;
+            border: 1px solid #ffbfd4;
+            border-radius: 60px;
+            font-family: 'Quicksand', sans-serif;
+            background: white;
+        }
+
+        .admin-panel textarea {
+            border-radius: 20px;
+            resize: vertical;
+        }
+
+        .admin-panel button {
+            background: #e86f9c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 60px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+            font-family: 'Quicksand', sans-serif;
+            transition: 0.2s;
+        }
+
+        .admin-panel button:hover {
+            background: #c44b7c;
+            transform: scale(1.02);
+        }
+
+        .admin-panel .close-btn {
+            background: #bda0ae;
+            margin-top: 5px;
+        }
+
+        .admin-panel .delete-btn {
+            background: #e07c8c;
+            margin-top: 5px;
+        }
+
+        .product-list-admin {
+            margin-top: 1rem;
+            max-height: 300px;
+            overflow-y: auto;
+            border-top: 1px solid #ffd0e2;
+            padding-top: 1rem;
+        }
+
+        .admin-product-item {
+            background: white;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #ffd9e8;
+        }
+
+        .admin-product-item span {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #87234f;
+        }
+
+        .admin-product-item button {
+            width: auto;
+            padding: 5px 12px;
+            margin: 0;
+            font-size: 0.7rem;
+            background: #f0b0c8;
+        }
+
+        .password-input-area {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .password-input-area input {
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .error-msg {
+            color: #d66b8b;
+            font-size: 0.8rem;
+            margin-top: 8px;
+        }
+
+        .success-msg {
+            color: #7fa87f;
+            font-size: 0.8rem;
+        }
     </style>
 </head>
 <body>
@@ -332,8 +452,7 @@
         </div>
     </div>
     <div class="intro-note">
-        ✨ every piece tells a story — my favorite picks, dreamy finds & must-haves ✨<br>
-        <span style="font-size:0.75rem;"><i class="fas fa-magic"></i> images auto-fetch from product links</span>
+        ✨ every piece tells a story — my favorite picks, dreamy finds & must-haves ✨
     </div>
 
     <div id="productGrid" class="wishlist-grid">
@@ -360,239 +479,141 @@
         </div>
     </div>
     <div class="footer-note">
-        <i class="fas fa-heart" style="color:#f6a7c1;"></i> created with girlish charm by anshika · auto image fetch <i class="fas fa-feather-alt"></i>
+        <i class="fas fa-heart" style="color:#f6a7c1;"></i> created with girlish charm by anshika <i class="fas fa-feather-alt"></i>
     </div>
-    <div class="creator-container">
-        <div class="creator-note">
-            <i class="fas fa-lock"></i> only anshika can update · paste any product link & image auto-fetches
+</div>
+
+<!-- SECRET HIDDEN TRIGGER (invisible click area) -->
+<div class="secret-admin-trigger" id="secretTrigger"></div>
+
+<!-- ADMIN PANEL OVERLAY (hidden by default, password protected) -->
+<div id="adminOverlay" class="admin-panel-overlay">
+    <div class="admin-panel" id="adminPanelContent">
+        <!-- Password prompt will appear first -->
+        <div id="passwordPrompt">
+            <h3><i class="fas fa-lock"></i> creator access</h3>
+            <div class="password-input-area">
+                <input type="password" id="adminPassword" placeholder="enter secret password" autocomplete="off">
+                <button id="submitPasswordBtn"><i class="fas fa-key"></i> unlock</button>
+                <div id="passwordError" class="error-msg"></div>
+            </div>
+            <button id="closeAdminBtn" class="close-btn"><i class="fas fa-times"></i> close</button>
+        </div>
+        
+        <!-- Admin dashboard (hidden until password correct) -->
+        <div id="adminDashboard" style="display: none;">
+            <h3><i class="fas fa-edit"></i> manage wishlist</h3>
+            <div>
+                <input type="text" id="productTitle" placeholder="product name *">
+                <textarea id="productDesc" rows="2" placeholder="product description"></textarea>
+                <input type="url" id="productLink" placeholder="product link (URL) *">
+                <input type="url" id="productImage" placeholder="image URL (optional, leave blank for fallback)">
+                <button id="addProductBtn"><i class="fas fa-plus-circle"></i> add product</button>
+            </div>
+            
+            <div class="product-list-admin" id="adminProductList">
+                <!-- dynamic list of products with delete buttons -->
+            </div>
+            <button id="closeAdminDashboardBtn" class="close-btn"><i class="fas fa-times-circle"></i> close panel</button>
         </div>
     </div>
 </div>
 
 <script>
     // ============================================================
-    // ANSHIKA'S WISHLIST — AUTO IMAGE FETCH FROM ANY PRODUCT LINK
+    // WISHLIST DATA - stored in localStorage with fallback
     // ============================================================
-    // Just paste ANY product URL (Amazon, Flipkart, Etsy, etc.)
-    // The system will automatically fetch the main product image
-    // using multiple smart strategies: OG image, meta tags, and fallback.
-    // ============================================================
+    let wishlistItems = [];
     
-    // ---------- YOUR PRODUCTS: ADD NEW ITEMS HERE ----------
-    // For each product, just provide: title, description, link
-    // The image will be AUTO-FETCHED from the link!
-    // You can also manually specify an imageUrl if auto-fetch fails.
+    // SECRET PASSWORD - only YOU know this! (change it to whatever you want)
+    const SECRET_PASSWORD = "anshika123";  // 🔒 change this to your private password
     
-    const wishlistItems = [
-        {
-            title: "✨ Cozy Cloud Hoodie",
-            description: "Ultra-soft oversized hoodie in lavender blush, perfect for cozy content days.",
-            link: "https://www.amazon.in/dp/B09X5Y8K7L",  // Example Amazon product (image will auto-fetch)
-            // no imageUrl needed — will auto-fetch!
-        },
-        {
-            title: "🌸 Crystal Hair Set",
-            description: "Pearl & flower hair clips — adds instant fairy vibes to any OOTD.",
-            link: "https://www.etsy.com/listing/123456789/crystal-hair-clips-set",  // Etsy example
-        },
-        {
-            title: "🎀 Digital Creator Kit",
-            description: "Notion templates + Lightroom presets made for content creators.",
-            link: "https://www.etsy.com/listing/987654321/creator-notion-template",
-        },
-        {
-            title: "💖 Glitter Heart Tumbler",
-            description: "40oz insulated tumbler with sparkle gradient — keeps iced coffee magical.",
-            link: "https://www.amazon.in/dp/B08XYZ1234",
-        },
-        {
-            title: "🕯️ Strawberry Milk Candle",
-            description: "Soy wax candle, notes of strawberry shortcake & vanilla cream.",
-            link: "https://www.flipkart.com/strawberry-milk-candle/p/itm123456789",
-        },
-        {
-            title: "📸 Beaded Phone Strap",
-            description: "Handmade pastel bead strap, aesthetic & functional for content creators.",
-            link: "https://www.amazon.in/dp/B07ABC123D",
-        }
-    ];
-    
-    // ============================================================
-    // You can also add items with manual image URL if needed:
-    // {
-    //     title: "My Special Item",
-    //     description: "Description here",
-    //     link: "https://productlink.com",
-    //     imageUrl: "https://direct-image-url.jpg"  // optional manual override
-    // },
-    // ============================================================
-    
-    // Helper: fetch product image from any URL using multiple strategies
-    async function fetchProductImage(productUrl) {
-        try {
-            // Use a CORS proxy to fetch the page HTML (works for most e-commerce sites)
-            // Using a free, reliable CORS proxy (cors-anywhere alternative)
-            const proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(productUrl);
-            const response = await axios.get(proxyUrl, { timeout: 8000 });
-            
-            if (response.data && response.data.contents) {
-                const html = response.data.contents;
-                
-                // Strategy 1: Look for Open Graph image (og:image) - most reliable
-                const ogImageMatch = html.match(/<meta[^>]*property=["']og:image["'][^>]*content=["']([^"']+)["'][^>]*>/i) ||
-                                     html.match(/<meta[^>]*content=["']([^"']+)["'][^>]*property=["']og:image["'][^>]*>/i);
-                if (ogImageMatch && ogImageMatch[1]) {
-                    let imgUrl = ogImageMatch[1];
-                    // Fix relative URLs
-                    if (imgUrl.startsWith('//')) imgUrl = 'https:' + imgUrl;
-                    else if (imgUrl.startsWith('/')) {
-                        const baseUrl = new URL(productUrl).origin;
-                        imgUrl = baseUrl + imgUrl;
-                    }
-                    return imgUrl;
-                }
-                
-                // Strategy 2: Twitter image
-                const twitterImageMatch = html.match(/<meta[^>]*name=["']twitter:image["'][^>]*content=["']([^"']+)["'][^>]*>/i);
-                if (twitterImageMatch && twitterImageMatch[1]) {
-                    let imgUrl = twitterImageMatch[1];
-                    if (imgUrl.startsWith('//')) imgUrl = 'https:' + imgUrl;
-                    else if (imgUrl.startsWith('/')) {
-                        const baseUrl = new URL(productUrl).origin;
-                        imgUrl = baseUrl + imgUrl;
-                    }
-                    return imgUrl;
-                }
-                
-                // Strategy 3: Look for large product images (Amazon specific patterns)
-                // Amazon high-res image pattern
-                const amazonImgMatch = html.match(/<img[^>]*src=["']([^"']*?\._AC_[^"']*?\.jpg|[^"']*?\.jpg)[^"']*?["'][^>]*>/i);
-                if (amazonImgMatch && amazonImgMatch[1]) {
-                    let imgUrl = amazonImgMatch[1];
-                    // Get the highest quality Amazon image by replacing with larger size
-                    if (imgUrl.includes('._AC_')) {
-                        imgUrl = imgUrl.replace(/\._AC_[^._]+\./, '._AC_SL1500_.');
-                    }
-                    if (imgUrl.startsWith('//')) imgUrl = 'https:' + imgUrl;
-                    else if (imgUrl.startsWith('/')) {
-                        const baseUrl = new URL(productUrl).origin;
-                        imgUrl = baseUrl + imgUrl;
-                    }
-                    return imgUrl;
-                }
-                
-                // Strategy 4: Find any reasonable size product image
-                const anyImgMatch = html.match(/<img[^>]*src=["']([^"']*\.(jpg|jpeg|png|webp)[^"']*)["'][^>]*class=["'][^"']*product[^"']*["']/i) ||
-                                     html.match(/<img[^>]*class=["'][^"']*product-image[^"']*["'][^>]*src=["']([^"']+)["']/i) ||
-                                     html.match(/<img[^>]*src=["']([^"']*?(?:product|main|large|zoom)[^"']*\.(jpg|jpeg|png|webp))["']/i);
-                if (anyImgMatch && anyImgMatch[1]) {
-                    let imgUrl = anyImgMatch[1];
-                    if (imgUrl.startsWith('//')) imgUrl = 'https:' + imgUrl;
-                    else if (imgUrl.startsWith('/')) {
-                        const baseUrl = new URL(productUrl).origin;
-                        imgUrl = baseUrl + imgUrl;
-                    }
-                    return imgUrl;
-                }
-            }
-        } catch (error) {
-            console.log('Auto-fetch failed for:', productUrl, error.message);
-        }
-        
-        // If all strategies fail, return null (will use fallback)
-        return null;
-    }
-    
-    // Process all wishlist items and fetch images
-    async function loadWishlistWithAutoImages() {
-        const gridContainer = document.getElementById('productGrid');
-        
-        // Show loading state
-        gridContainer.innerHTML = `<div class="empty-message"><i class="fas fa-magic fa-pulse"></i> auto-fetching product images... ✨</div>`;
-        
-        // Process each item and fetch image
-        const processedItems = [];
-        
-        for (let i = 0; i < wishlistItems.length; i++) {
-            const item = wishlistItems[i];
-            
-            // If manual imageUrl provided, use it immediately
-            if (item.imageUrl && item.imageUrl.trim() !== '') {
-                processedItems.push({
-                    ...item,
-                    fetchedImage: item.imageUrl,
-                    imageStatus: 'loaded'
-                });
-                continue;
-            }
-            
-            // Otherwise auto-fetch from link
-            let fetchedImage = null;
-            let imageStatus = 'loading';
-            
-            // Show loading in UI incrementally? We'll render after all to avoid flicker
+    // Load data from localStorage or use default demo products
+    function loadData() {
+        const saved = localStorage.getItem('anshu_wishlist');
+        if (saved) {
             try {
-                fetchedImage = await fetchProductImage(item.link);
-                if (fetchedImage) {
-                    imageStatus = 'loaded';
-                } else {
-                    imageStatus = 'fallback';
-                }
-            } catch (err) {
-                imageStatus = 'fallback';
+                wishlistItems = JSON.parse(saved);
+            } catch(e) {
+                wishlistItems = getDefaultProducts();
             }
-            
-            processedItems.push({
-                ...item,
-                fetchedImage: fetchedImage,
-                imageStatus: imageStatus
-            });
+        } else {
+            wishlistItems = getDefaultProducts();
         }
-        
-        // Render the grid with fetched images
-        renderWishlist(processedItems);
+        renderWishlist();
     }
     
-    function renderWishlist(items) {
+    // Default cute products for first-time visitors
+    function getDefaultProducts() {
+        return [
+            {
+                id: Date.now() + 1,
+                title: "✨ Cozy Cloud Hoodie",
+                description: "Ultra-soft oversized hoodie in lavender blush, perfect for cozy content days.",
+                link: "https://example.com/product/cloud-hoodie",
+                imageUrl: "https://picsum.photos/id/20/400/300"
+            },
+            {
+                id: Date.now() + 2,
+                title: "🌸 Crystal Hair Set",
+                description: "Pearl & flower hair clips — adds instant fairy vibes to any OOTD.",
+                link: "https://example.com/product/hair-set",
+                imageUrl: "https://picsum.photos/id/96/400/300"
+            },
+            {
+                id: Date.now() + 3,
+                title: "🎀 Digital Creator Kit",
+                description: "Notion templates + Lightroom presets made for content creators.",
+                link: "https://example.com/product/creator-kit",
+                imageUrl: "https://picsum.photos/id/26/400/300"
+            },
+            {
+                id: Date.now() + 4,
+                title: "💖 Glitter Heart Tumbler",
+                description: "40oz insulated tumbler with sparkle gradient — keeps iced coffee magical.",
+                link: "https://example.com/product/tumbler",
+                imageUrl: "https://picsum.photos/id/30/400/300"
+            }
+        ];
+    }
+    
+    // Save to localStorage
+    function saveToLocalStorage() {
+        localStorage.setItem('anshu_wishlist', JSON.stringify(wishlistItems));
+    }
+    
+    // Helper: escape HTML
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+    
+    // Render public wishlist grid
+    function renderWishlist() {
         const gridContainer = document.getElementById('productGrid');
+        if (!gridContainer) return;
         
-        if (!items || items.length === 0) {
-            gridContainer.innerHTML = `<div class="empty-message"><i class="fas fa-gift"></i> no wishlist items yet — add some products! 🌸</div>`;
+        if (!wishlistItems || wishlistItems.length === 0) {
+            gridContainer.innerHTML = `<div class="empty-message"><i class="fas fa-gift"></i> no wishlist items yet — check back soon! 🌸</div>`;
             return;
         }
         
         let cardsHTML = '';
-        for (let i = 0; i < items.length; i++) {
-            const item = items[i];
+        for (let i = 0; i < wishlistItems.length; i++) {
+            const item = wishlistItems[i];
             const safeTitle = escapeHtml(item.title);
             const safeDesc = escapeHtml(item.description);
             const safeLink = escapeHtml(item.link);
+            let imgUrl = item.imageUrl && item.imageUrl.trim() !== '' ? item.imageUrl : '';
             
-            // Determine image source
-            let imgSrc = '';
-            let showFallback = false;
-            
-            if (item.imageStatus === 'loaded' && item.fetchedImage) {
-                imgSrc = item.fetchedImage;
-                showFallback = false;
-            } else if (item.imageUrl && item.imageUrl.trim() !== '') {
-                imgSrc = item.imageUrl;
-                showFallback = false;
-            } else {
-                showFallback = true;
-                // Use a pretty placeholder with product name
-                imgSrc = '';
-            }
-            
-            const imageHtml = showFallback ? 
-                `<div class="img-fallback">
-                    <i class="fas fa-image"></i>
-                    <span style="font-size:0.7rem;margin-top:8px;">✨ ${safeTitle} ✨</span>
-                    <span style="font-size:0.6rem;margin-top:4px;color:#c289a3;"><i class="fas fa-magic"></i> image auto-fetch</span>
-                </div>` :
-                `<img src="${imgSrc}" alt="${safeTitle}" 
-                     onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'img-fallback\'><i class=\\'fas fa-image\\'></i><span style=\\'font-size:0.7rem;margin-top:8px;\\'>✨ ${safeTitle} ✨</span><span style=\\'font-size:0.6rem;margin-top:4px;color:#c289a3;\\'><i class=\\'fas fa-magic\\'></i> image fallback</span></div>';">
-                `;
+            const imageHtml = imgUrl ? 
+                `<img src="${imgUrl}" alt="${safeTitle}" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'img-fallback\'><i class=\\'fas fa-image\\'></i><span style=\\'font-size:0.7rem;margin-top:8px;\\'>✨ ${safeTitle} ✨</span></div>';">` :
+                `<div class="img-fallback"><i class="fas fa-image"></i><span style="font-size:0.7rem;margin-top:8px;">✨ ${safeTitle} ✨</span></div>`;
             
             cardsHTML += `
                 <div class="product-card">
@@ -611,32 +632,168 @@
                 </div>
             `;
         }
-        
         gridContainer.innerHTML = cardsHTML;
     }
     
-    function escapeHtml(str) {
-        if (!str) return '';
-        return str.replace(/[&<>]/g, function(m) {
-            if (m === '&') return '&amp;';
-            if (m === '<') return '&lt;';
-            if (m === '>') return '&gt;';
-            return m;
+    // Admin: render product list inside admin panel (for delete)
+    function renderAdminProductList() {
+        const adminListContainer = document.getElementById('adminProductList');
+        if (!adminListContainer) return;
+        
+        if (wishlistItems.length === 0) {
+            adminListContainer.innerHTML = '<p style="text-align:center; color:#b46f8a;">✨ no products yet, add some! ✨</p>';
+            return;
+        }
+        
+        let listHtml = '';
+        for (let i = 0; i < wishlistItems.length; i++) {
+            const item = wishlistItems[i];
+            listHtml += `
+                <div class="admin-product-item">
+                    <span><strong>${escapeHtml(item.title)}</strong></span>
+                    <button class="delete-item-btn" data-id="${item.id}"><i class="fas fa-trash-alt"></i> remove</button>
+                </div>
+            `;
+        }
+        adminListContainer.innerHTML = listHtml;
+        
+        // attach delete events
+        document.querySelectorAll('.delete-item-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const id = parseInt(btn.getAttribute('data-id'));
+                deleteProductById(id);
+            });
         });
     }
     
-    // Helper function to add new items (for creator convenience - but NO public form)
-    // This is only for you to use when editing the array above.
-    // Just add objects to wishlistItems array and refresh!
+    function deleteProductById(id) {
+        wishlistItems = wishlistItems.filter(item => item.id !== id);
+        saveToLocalStorage();
+        renderWishlist();
+        renderAdminProductList();
+        showTemporaryMessage('🗑️ product removed successfully', '#b76e8e');
+    }
     
-    // Load everything
-    loadWishlistWithAutoImages();
+    function addNewProduct() {
+        const title = document.getElementById('productTitle').value.trim();
+        const link = document.getElementById('productLink').value.trim();
+        if (!title || !link) {
+            alert('🌸 please fill product name and link at least 🌸');
+            return;
+        }
+        const desc = document.getElementById('productDesc').value.trim() || "a lovely addition to my wishlist ✨";
+        let imageUrl = document.getElementById('productImage').value.trim();
+        
+        const newProduct = {
+            id: Date.now(),
+            title: title,
+            description: desc,
+            link: link,
+            imageUrl: imageUrl
+        };
+        
+        wishlistItems.unshift(newProduct);
+        saveToLocalStorage();
+        renderWishlist();
+        renderAdminProductList();
+        
+        // clear form
+        document.getElementById('productTitle').value = '';
+        document.getElementById('productDesc').value = '';
+        document.getElementById('productLink').value = '';
+        document.getElementById('productImage').value = '';
+        
+        showTemporaryMessage('✨ new product added to wishlist! ✨', '#8fbc8f');
+    }
     
-    // Console info for creator
-    console.log('🌸 Anshu\'s Wishlist — Auto Image Fetch Active!');
-    console.log('💡 To add new products: edit the "wishlistItems" array in the HTML source code.');
-    console.log('📸 Just paste any product link (Amazon, Flipkart, Etsy, etc.) and the image will auto-fetch!');
-    console.log('🔒 No public edit form — only you can update by editing the source file.');
+    function showTemporaryMessage(msg, color) {
+        const notif = document.createElement('div');
+        notif.innerText = msg;
+        notif.style.position = 'fixed';
+        notif.style.bottom = '20px';
+        notif.style.left = '50%';
+        notif.style.transform = 'translateX(-50%)';
+        notif.style.backgroundColor = color;
+        notif.style.color = 'white';
+        notif.style.padding = '10px 20px';
+        notif.style.borderRadius = '40px';
+        notif.style.fontWeight = 'bold';
+        notif.style.zIndex = '1001';
+        notif.style.fontFamily = 'Quicksand, sans-serif';
+        notif.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+        document.body.appendChild(notif);
+        setTimeout(() => notif.remove(), 2500);
+    }
+    
+    // ---------- HIDDEN ADMIN PANEL LOGIC ----------
+    const adminOverlay = document.getElementById('adminOverlay');
+    const secretTrigger = document.getElementById('secretTrigger');
+    const passwordPromptDiv = document.getElementById('passwordPrompt');
+    const adminDashboardDiv = document.getElementById('adminDashboard');
+    const submitPasswordBtn = document.getElementById('submitPasswordBtn');
+    const adminPasswordInput = document.getElementById('adminPassword');
+    const passwordErrorSpan = document.getElementById('passwordError');
+    
+    // Open panel via secret click (anywhere on hidden trigger)
+    function openAdminPanel() {
+        adminOverlay.style.display = 'flex';
+        // Reset to password mode
+        passwordPromptDiv.style.display = 'block';
+        adminDashboardDiv.style.display = 'none';
+        adminPasswordInput.value = '';
+        passwordErrorSpan.innerText = '';
+        // Reset any leftover admin list render later
+    }
+    
+    secretTrigger.addEventListener('click', openAdminPanel);
+    
+    // Close panel
+    function closeAdminPanel() {
+        adminOverlay.style.display = 'none';
+        passwordPromptDiv.style.display = 'block';
+        adminDashboardDiv.style.display = 'none';
+    }
+    
+    document.getElementById('closeAdminBtn')?.addEventListener('click', closeAdminPanel);
+    document.getElementById('closeAdminDashboardBtn')?.addEventListener('click', closeAdminPanel);
+    
+    // Password verification
+    function verifyPassword() {
+        const enteredPass = adminPasswordInput.value;
+        if (enteredPass === SECRET_PASSWORD) {
+            // correct password - show dashboard
+            passwordPromptDiv.style.display = 'none';
+            adminDashboardDiv.style.display = 'block';
+            renderAdminProductList(); // load current products for admin
+            passwordErrorSpan.innerText = '';
+        } else {
+            passwordErrorSpan.innerText = '🔒 incorrect password · access denied';
+            adminPasswordInput.value = '';
+        }
+    }
+    
+    submitPasswordBtn.addEventListener('click', verifyPassword);
+    adminPasswordInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') verifyPassword();
+    });
+    
+    // Add product button event
+    document.getElementById('addProductBtn')?.addEventListener('click', addNewProduct);
+    
+    // Close overlay when clicking outside panel content
+    adminOverlay.addEventListener('click', (e) => {
+        if (e.target === adminOverlay) {
+            closeAdminPanel();
+        }
+    });
+    
+    // Initial load
+    loadData();
+    
+    // Small hint in console only for you (no one sees unless dev tools open)
+    console.log('%c🌸 Anshu\'s Wishlist — hidden admin panel active! 🌸', 'color: #c44b7c; font-size: 14px;');
+    console.log('%c💡 SECRET: click the invisible area at bottom-right corner of the page (tiny hidden spot) to open password-protected admin panel.', 'color: #b35d7e;');
+    console.log('%c🔑 default password: "anshika123" (you can change it in the script: SECRET_PASSWORD variable)', 'color: #e36f9a;');
 </script>
 </body>
 </html>
