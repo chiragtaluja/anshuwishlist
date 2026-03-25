@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>🌸 Anshu's Wishlist | Curated by Anshika</title>
+    <!-- Google Fonts & simple CSS reset -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #fff5f9 0%, #ffe6f0 100%);
+            font-family: 'Quicksand', sans-serif;
+            color: #4a2b3a;
+            padding: 2rem 1rem;
+        }
+
+        /* main container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* header section - girlish dreamy */
+        .wishlist-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .wishlist-header h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #e86f9c, #c44b7c, #f4a2c0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 3px 3px 12px rgba(241, 147, 187, 0.2);
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .header-sub {
+            font-size: 1.2rem;
+            font-weight: 500;
+            background: rgba(255, 240, 245, 0.8);
+            display: inline-block;
+            padding: 0.4rem 1.6rem;
+            border-radius: 60px;
+            backdrop-filter: blur(4px);
+            color: #b35d7e;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            border: 1px solid #ffcddf;
+        }
+
+        .header-sub i {
+            margin: 0 6px;
+            color: #f28cb1;
+        }
+
+        /* description */
+        .intro-note {
+            text-align: center;
+            margin: 1rem auto 2rem auto;
+            max-width: 600px;
+            background: #fffbfd;
+            padding: 0.8rem 1.5rem;
+            border-radius: 80px;
+            font-weight: 500;
+            color: #a65377;
+            box-shadow: 0 6px 14px rgba(236, 120, 144, 0.1);
+            border: 1px solid #ffe2ed;
+            font-size: 0.95rem;
+        }
+
+        /* product grid - girly cards */
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0 3rem;
+        }
+
+        .product-card {
+            background: #ffffffdd;
+            backdrop-filter: blur(2px);
+            background: linear-gradient(135deg, #ffffff, #fffafc);
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 20px 30px -12px rgba(160, 70, 100, 0.2);
+            transition: all 0.3s ease;
+            border: 1px solid #ffd9e8;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 28px 36px -12px rgba(200, 80, 120, 0.3);
+            border-color: #ffb7d0;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 230px;
+            background: #fceef4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .card-img img {
+            transform: scale(1.02);
+        }
+
+        /* fallback if image fails */
+        .card-img .img-fallback {
+            font-size: 3rem;
+            color: #e6a1be;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            background: #ffeef4;
+        }
+
+        .card-content {
+            padding: 1.2rem 1.3rem 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #87234f;
+            margin-bottom: 0.6rem;
+            line-height: 1.3;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .product-desc {
+            font-size: 0.85rem;
+            color: #7c5b69;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .link-wrapper {
+            margin-top: 0.5rem;
+        }
+
+        .product-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #fce4ed;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            color: #b13e6b;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+            border: 1px solid #ffbfd4;
+        }
+
+        .product-link i {
+            font-size: 0.9rem;
+        }
+
+        .product-link:hover {
+            background: #f7cadf;
+            color: #871f4b;
+            border-color: #f59fc0;
+        }
+
+        /* about me section - girlish & charming */
+        .about-section {
+            background: #fff4f9;
+            border-radius: 2.5rem;
+            padding: 2rem 2rem 2rem 2rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 8px 20px rgba(231, 122, 158, 0.1);
+            border: 1px solid #ffdfeb;
+            text-align: center;
+        }
+
+        .about-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.3rem;
+            font-weight: 600;
+            color: #c75682;
+            margin-bottom: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .about-title i {
+            font-size: 2rem;
+            color: #f48fb1;
+        }
+
+        .about-text {
+            max-width: 700px;
+            margin: 0 auto 1.8rem auto;
+            font-size: 1rem;
+            line-height: 1.6;
+            background: #ffffffb3;
+            padding: 1rem 1.8rem;
+            border-radius: 40px;
+            color: #4a2b38;
+        }
+
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-top: 0.8rem;
+        }
+
+        .social-links a {
+            background: #ffffffdb;
+            backdrop-filter: blur(4px);
+            padding: 0.7rem 1.5rem;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #b64a73;
+            transition: all 0.2s;
+            border: 1px solid #ffc0d6;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        .social-links a i {
+            font-size: 1.2rem;
+            color: #e36f9a;
+        }
+
+        .social-links a:hover {
+            background: #ffeef5;
+            transform: scale(1.02);
+            border-color: #f7a7c4;
+            color: #992851;
+        }
+
+        /* empty / no content fallback */
+        .empty-message {
+            text-align: center;
+            padding: 3rem;
+            background: #ffeff5;
+            border-radius: 2rem;
+            color: #bf6d8d;
+            font-weight: 500;
+        }
+
+        /* footer tiny heart */
+        .footer-note {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            color: #e2a1bb;
+        }
+
+        /* responsive */
+        @media (max-width: 640px) {
+            .wishlist-header h1 {
+                font-size: 3rem;
+            }
+            .about-title {
+                font-size: 1.9rem;
+            }
+            .social-links a {
+                padding: 0.5rem 1.2rem;
+                font-size: 0.8rem;
+            }
+        }
+        
+        /* creator note - subtle, only visible to indicate how to update (frontend only) */
+        .creator-note {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #e5a1bc;
+            margin-top: 0.5rem;
+            background: #fff0f5;
+            display: inline-block;
+            width: auto;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            cursor: default;
+        }
+        .creator-note i {
+            margin-right: 4px;
+        }
+        .creator-container {
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- header: anshus wishlist with girly vibe -->
+    <div class="wishlist-header">
+        <h1>🌸 anshu's wishlist 🌸</h1>
+        <div class="header-sub">
+            <i class="fas fa-heart"></i> curated with love & magic <i class="fas fa-star"></i>
+        </div>
+    </div>
+    <div class="intro-note">
+        ✨ every piece tells a story — my favorite picks, dreamy finds & must-haves ✨
+    </div>
+
+    <!-- product grid: where uploaded content with links & images appear (view only) -->
+    <div id="productGrid" class="wishlist-grid">
+        <!-- dynamic content injected via JS -->
+        <div class="empty-message">
+            <i class="fas fa-spinner fa-pulse"></i> loading your wishlist treasures...
+        </div>
+    </div>
+
+    <!-- about me section + related links -->
+    <div class="about-section">
+        <div class="about-title">
+            <i class="fas fa-pastafarianism"></i> little about me <i class="fas fa-crown"></i>
+        </div>
+        <div class="about-text">
+            🌼 Heyy, I'm Anshika — a full-time content creator & dreamer who loves sharing all types of content, from lifestyle gems to aesthetic finds! 
+            I believe every product has a vibe, and my wishlist is a little corner of things that spark joy. When I'm not creating, you'll find me sipping chai, clicking polaroids, or curating moodboards. 💖<br>
+            Thanks for stopping by my digital diary ✨
+        </div>
+        <div class="social-links">
+            <a href="https://www.instagram.com/anshu_creates" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://www.youtube.com/@AnshikaCreates" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+            <a href="https://www.tiktok.com/@anshika.loves" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+            <a href="mailto:anshika@wishlist.com" target="_blank"><i class="far fa-envelope"></i> Collab</a>
+            <a href="https://www.shopmywishlist.com/anshika" target="_blank"><i class="fas fa-link"></i> Shop my shelf</a>
+        </div>
+    </div>
+    <div class="footer-note">
+        <i class="fas fa-heart" style="color:#f6a7c1;"></i> created with girlish charm by anshika <i class="fas fa-feather-alt"></i>
+    </div>
+    <!-- subtle note for creator: how to update (only frontend, private way) -->
+    
+</div>
+
+<script>
+    // ============================================================
+    // ANSHIKA'S PRIVATE WISHLIST CONTENT
+    // ============================================================
+    // This is the ONLY place where products are stored.
+    // Since the webpage is public, only YOU (Anshika) can edit this array.
+    // No one else can add/remove items because there's NO public form.
+    // To add new products, simply edit this array in the HTML file.
+    // Each product needs: title, description, link, imageUrl.
+    // ============================================================
+    
+    const wishlistItems = [
+        {
+            title: "✨ Cozy Cloud Hoodie",
+            description: "Ultra-soft oversized hoodie in lavender blush, perfect for cozy content days.",
+            link: "https://example.com/product/cloud-hoodie",
+            imageUrl: "https://picsum.photos/id/20/400/300"
+        },
+        {
+            title: "🌸 Crystal Hair Set",
+            description: "Pearl & flower hair clips — adds instant fairy vibes to any OOTD.",
+            link: "https://example.com/product/hair-set",
+            imageUrl: "https://picsum.photos/id/96/400/300"
+        },
+        {
+            title: "🎀 Digital Creator Kit",
+            description: "Notion templates + Lightroom presets made for content creators.",
+            link: "https://example.com/product/creator-kit",
+            imageUrl: "https://picsum.photos/id/26/400/300"
+        },
+        {
+            title: "💖 Glitter Heart Tumbler",
+            description: "40oz insulated tumbler with sparkle gradient — keeps iced coffee magical.",
+            link: "https://example.com/product/tumbler",
+            imageUrl: "https://picsum.photos/id/30/400/300"
+        },
+        {
+            title: "🕯️ Strawberry Milk Candle",
+            description: "Soy wax candle, notes of strawberry shortcake & vanilla cream.",
+            link: "https://example.com/product/candle",
+            imageUrl: "https://picsum.photos/id/29/400/300"
+        },
+        {
+            title: "📸 Beaded Phone Strap",
+            description: "Handmade pastel bead strap, aesthetic & functional for content creators.",
+            link: "https://example.com/product/phone-strap",
+            imageUrl: "https://picsum.photos/id/0/400/300"
+        }
+    ];
+    
+    // ============================================================
+    // If you (Anshika) want to add more products in the future:
+    // Just copy the pattern above and paste inside the array.
+    // Example:
+    // {
+    //     title: "Your New Product",
+    //     description: "Cute description here",
+    //     link: "https://yourproductlink.com",
+    //     imageUrl: "https://direct-image-url.jpg"
+    // },
+    // ============================================================
+    
+    // Helper function to escape HTML to prevent any XSS (though content is trusted)
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+    
+    // Render product cards from the private wishlist array
+    function renderWishlist() {
+        const gridContainer = document.getElementById('productGrid');
+        if (!gridContainer) return;
+        
+        if (!wishlistItems || wishlistItems.length === 0) {
+            gridContainer.innerHTML = `<div class="empty-message"><i class="fas fa-gift"></i> no wishlist items yet — check back soon! 🌸</div>`;
+            return;
+        }
+        
+        let cardsHTML = '';
+        for (let i = 0; i < wishlistItems.length; i++) {
+            const item = wishlistItems[i];
+            const imgUrl = item.imageUrl && item.imageUrl.trim() !== '' ? item.imageUrl : 'https://picsum.photos/id/13/400/300';
+            const safeTitle = escapeHtml(item.title);
+            const safeDesc = escapeHtml(item.description);
+            const safeLink = escapeHtml(item.link);
+            
+            cardsHTML += `
+                <div class="product-card">
+                    <div class="card-img">
+                        <img src="${imgUrl}" alt="${safeTitle}" 
+                             onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'img-fallback\'><i class=\'fas fa-image\'></i><span style=\'font-size:0.7rem;margin-top:8px;\'>✨ ${safeTitle} ✨</span></div>';">
+                    </div>
+                    <div class="card-content">
+                        <div class="product-title">${safeTitle}</div>
+                        <div class="product-desc">${safeDesc}</div>
+                        <div class="link-wrapper">
+                            <a href="${safeLink}" target="_blank" class="product-link" rel="noopener noreferrer">
+                                <i class="fas fa-shopping-bag"></i> view product
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        gridContainer.innerHTML = cardsHTML;
+    }
+    
+    // Initialize the page with your private wishlist
+    renderWishlist();
+    
+    // ============================================================
+    // SECURITY & PUBLIC ACCESS NOTES:
+    // - There is NO public form, NO input fields, NO way for visitors to add/edit items.
+    // - Only editing the 'wishlistItems' array in this source code can modify content.
+    // - Since this is a static HTML/CSS/JS file hosted anywhere, only you (Anshika)
+    //   have access to modify the source (by editing the file and re-uploading).
+    // - Perfect for sharing publicly — everyone sees your curated list, but only you can update it.
+    // ============================================================
+    
+    // Optional: For a smooth user experience, add a tiny console reminder (only visible to dev)
+    if (typeof window !== 'undefined') {
+        console.log("🌸 Anshu's Wishlist — view-only mode. To update, edit wishlistItems array in source.");
+    }
+    
+    // Also, add fallback for any external image loading issues — handled via onerror.
+    // All product links open in new tab for safety.
+</script>
+</body>
+</html>
