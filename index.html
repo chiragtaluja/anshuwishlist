@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -7,7 +8,9 @@
     <!-- Google Fonts & simple CSS reset -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -56,7 +59,7 @@
             border-radius: 60px;
             backdrop-filter: blur(4px);
             color: #b35d7e;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
             border: 1px solid #ffcddf;
         }
 
@@ -253,7 +256,7 @@
             transition: all 0.2s;
             border: 1px solid #ffc0d6;
             font-size: 0.95rem;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
         }
 
         .social-links a i {
@@ -288,9 +291,11 @@
             .wishlist-header h1 {
                 font-size: 3rem;
             }
+
             .about-title {
                 font-size: 1.9rem;
             }
+
             .social-links a {
                 padding: 0.5rem 1.2rem;
                 font-size: 0.8rem;
@@ -315,7 +320,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(8px);
             z-index: 1000;
             display: none;
@@ -344,7 +349,8 @@
             text-align: center;
         }
 
-        .admin-panel input, .admin-panel textarea {
+        .admin-panel input,
+        .admin-panel textarea {
             width: 100%;
             padding: 10px 15px;
             margin: 8px 0;
@@ -443,179 +449,160 @@
         }
     </style>
 </head>
+
 <body>
-<div class="container">
-    <div class="wishlist-header">
-        <h1>🌸 anshu's wishlist 🌸</h1>
-        <div class="header-sub">
-            <i class="fas fa-heart"></i> curated with love & magic <i class="fas fa-star"></i>
-        </div>
-    </div>
-    <div class="intro-note">
-        ✨ every piece tells a story — my favorite picks, dreamy finds & must-haves ✨
-    </div>
-
-    <div id="productGrid" class="wishlist-grid">
-        <div class="empty-message">
-            <i class="fas fa-spinner fa-pulse"></i> loading your wishlist treasures...
-        </div>
-    </div>
-
-    <div class="about-section">
-        <div class="about-title">
-            <i class="fas fa-pastafarianism"></i> little about me <i class="fas fa-crown"></i>
-        </div>
-        <div class="about-text">
-            🌼 Heyy, I'm Anshika — a full-time content creator & dreamer who loves sharing all types of content, from lifestyle gems to aesthetic finds! 
-            I believe every product has a vibe, and my wishlist is a little corner of things that spark joy. When I'm not creating, you'll find me sipping chai, clicking polaroids, or curating moodboards. 💖<br>
-            Thanks for stopping by my digital diary ✨
-        </div>
-        <div class="social-links">
-            <a href="https://www.instagram.com/anshu_creates" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-            <a href="https://www.youtube.com/@AnshikaCreates" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
-            <a href="https://www.tiktok.com/@anshika.loves" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
-            <a href="mailto:anshika@wishlist.com" target="_blank"><i class="far fa-envelope"></i> Collab</a>
-            <a href="https://www.shopmywishlist.com/anshika" target="_blank"><i class="fas fa-link"></i> Shop my shelf</a>
-        </div>
-    </div>
-    <div class="footer-note">
-        <i class="fas fa-heart" style="color:#f6a7c1;"></i> created with girlish charm by anshika <i class="fas fa-feather-alt"></i>
-    </div>
-</div>
-
-<!-- SECRET HIDDEN TRIGGER (invisible click area) -->
-<div class="secret-admin-trigger" id="secretTrigger"></div>
-
-<!-- ADMIN PANEL OVERLAY (hidden by default, password protected) -->
-<div id="adminOverlay" class="admin-panel-overlay">
-    <div class="admin-panel" id="adminPanelContent">
-        <!-- Password prompt will appear first -->
-        <div id="passwordPrompt">
-            <h3><i class="fas fa-lock"></i> creator access</h3>
-            <div class="password-input-area">
-                <input type="password" id="adminPassword" placeholder="enter secret password" autocomplete="off">
-                <button id="submitPasswordBtn"><i class="fas fa-key"></i> unlock</button>
-                <div id="passwordError" class="error-msg"></div>
+    <div class="container">
+        <div class="wishlist-header">
+            <h1>🌸 anshu's wishlist 🌸</h1>
+            <div class="header-sub">
+                <i class="fas fa-heart"></i> curated with love & magic <i class="fas fa-star"></i>
             </div>
-            <button id="closeAdminBtn" class="close-btn"><i class="fas fa-times"></i> close</button>
         </div>
-        
-        <!-- Admin dashboard (hidden until password correct) -->
-        <div id="adminDashboard" style="display: none;">
-            <h3><i class="fas fa-edit"></i> manage wishlist</h3>
-            <div>
-                <input type="text" id="productTitle" placeholder="product name *">
-                <textarea id="productDesc" rows="2" placeholder="product description"></textarea>
-                <input type="url" id="productLink" placeholder="product link (URL) *">
-                <input type="url" id="productImage" placeholder="image URL (optional, leave blank for fallback)">
-                <button id="addProductBtn"><i class="fas fa-plus-circle"></i> add product</button>
+        <div class="intro-note">
+            ✨ every piece tells a story — my favorite picks, dreamy finds & must-haves ✨
+        </div>
+
+        <div id="productGrid" class="wishlist-grid">
+            <div class="empty-message">
+                <i class="fas fa-spinner fa-pulse"></i> loading your wishlist treasures...
             </div>
-            
-            <div class="product-list-admin" id="adminProductList">
-                <!-- dynamic list of products with delete buttons -->
+        </div>
+
+        <div class="about-section">
+            <div class="about-title">
+                <i class="fas fa-pastafarianism"></i> little about me <i class="fas fa-crown"></i>
             </div>
-            <button id="closeAdminDashboardBtn" class="close-btn"><i class="fas fa-times-circle"></i> close panel</button>
+            <div class="about-text">
+                🌼 Heyy, I'm Anshika — a full-time content creator & dreamer who loves sharing all types of content,
+                from lifestyle gems to aesthetic finds!
+                I believe every product has a vibe, and my wishlist is a little corner of things that spark joy. When
+                I'm not creating, you'll find me sipping chai, clicking polaroids, or curating moodboards. 💖<br>
+                Thanks for stopping by my digital diary ✨
+            </div>
+            <div class="social-links">
+                <a href="https://www.instagram.com/anshu_creates" target="_blank"><i class="fab fa-instagram"></i>
+                    Instagram</a>
+                <a href="https://www.youtube.com/@AnshikaCreates" target="_blank"><i class="fab fa-youtube"></i>
+                    YouTube</a>
+                <a href="https://www.tiktok.com/@anshika.loves" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+                <a href="mailto:anshika@wishlist.com" target="_blank"><i class="far fa-envelope"></i> Collab</a>
+                <a href="https://www.shopmywishlist.com/anshika" target="_blank"><i class="fas fa-link"></i> Shop my
+                    shelf</a>
+            </div>
+        </div>
+        <div class="footer-note">
+            <i class="fas fa-heart" style="color:#f6a7c1;"></i> created with girlish charm by anshika <i
+                class="fas fa-feather-alt"></i>
         </div>
     </div>
-</div>
 
-<script>
-    // ============================================================
-    // WISHLIST DATA - stored in localStorage with fallback
-    // ============================================================
-    let wishlistItems = [];
-    
-    // SECRET PASSWORD - only YOU know this! (change it to whatever you want)
-    const SECRET_PASSWORD = "anshika123";  // 🔒 change this to your private password
-    
-    // Load data from localStorage or use default demo products
-    function loadData() {
-        const saved = localStorage.getItem('anshu_wishlist');
-        if (saved) {
-            try {
-                wishlistItems = JSON.parse(saved);
-            } catch(e) {
-                wishlistItems = getDefaultProducts();
-            }
-        } else {
-            wishlistItems = getDefaultProducts();
+    <!-- SECRET HIDDEN TRIGGER (invisible click area) -->
+    <div class="secret-admin-trigger" id="secretTrigger"></div>
+
+    <!-- ADMIN PANEL OVERLAY (hidden by default, password protected) -->
+    <div id="adminOverlay" class="admin-panel-overlay">
+        <div class="admin-panel" id="adminPanelContent">
+            <!-- Password prompt will appear first -->
+            <div id="passwordPrompt">
+                <h3><i class="fas fa-lock"></i> creator access</h3>
+                <div class="password-input-area">
+                    <input type="password" id="adminPassword" placeholder="enter secret password" autocomplete="off">
+                    <button id="submitPasswordBtn"><i class="fas fa-key"></i> unlock</button>
+                    <div id="passwordError" class="error-msg"></div>
+                </div>
+                <button id="closeAdminBtn" class="close-btn"><i class="fas fa-times"></i> close</button>
+            </div>
+
+            <!-- Admin dashboard (hidden until password correct) -->
+            <div id="adminDashboard" style="display: none;">
+                <h3><i class="fas fa-edit"></i> manage wishlist</h3>
+                <div>
+                    <input type="text" id="productTitle" placeholder="product name *">
+                    <textarea id="productDesc" rows="2" placeholder="product description"></textarea>
+                    <input type="url" id="productLink" placeholder="product link (URL) *">
+                    <input type="url" id="productImage" placeholder="image URL (optional, leave blank for fallback)">
+                    <button id="addProductBtn"><i class="fas fa-plus-circle"></i> add product</button>
+                </div>
+
+                <div class="product-list-admin" id="adminProductList">
+                    <!-- dynamic list of products with delete buttons -->
+                </div>
+                <button id="closeAdminDashboardBtn" class="close-btn"><i class="fas fa-times-circle"></i> close
+                    panel</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script>
+        // 🔥 Firebase Setup
+        const firebaseConfig = {
+            apiKey: "AIzaSyC6qXXp227WvS25HjOsBG5cvLOCOiO2wvU",
+            authDomain: "anshu-wishlist.firebaseapp.com",
+            projectId: "anshu-wishlist",
+            storageBucket: "anshu-wishlist.firebasestorage.app",
+            messagingSenderId: "802563909483",
+            appId: "1:802563909483:web:7e0bc07d30c61b488c0e2e"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        // ============================================================
+        // WISHLIST DATA - stored in localStorage with fallback
+        // ============================================================
+        let wishlistItems = [];
+
+        // SECRET PASSWORD - only YOU know this! (change it to whatever you want)
+        const SECRET_PASSWORD = "anshika123";  // 🔒 change this to your private password
+
+        // Load data from localStorage or use default demo products
+        function loadData() {
+            db.collection("wishlist").onSnapshot(snapshot => {
+                wishlistItems = snapshot.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }));
+                renderWishlist();
+            });
         }
-        renderWishlist();
-    }
-    
-    // Default cute products for first-time visitors
-    function getDefaultProducts() {
-        return [
-            {
-                id: Date.now() + 1,
-                title: "✨ Cozy Cloud Hoodie",
-                description: "Ultra-soft oversized hoodie in lavender blush, perfect for cozy content days.",
-                link: "https://example.com/product/cloud-hoodie",
-                imageUrl: "https://picsum.photos/id/20/400/300"
-            },
-            {
-                id: Date.now() + 2,
-                title: "🌸 Crystal Hair Set",
-                description: "Pearl & flower hair clips — adds instant fairy vibes to any OOTD.",
-                link: "https://example.com/product/hair-set",
-                imageUrl: "https://picsum.photos/id/96/400/300"
-            },
-            {
-                id: Date.now() + 3,
-                title: "🎀 Digital Creator Kit",
-                description: "Notion templates + Lightroom presets made for content creators.",
-                link: "https://example.com/product/creator-kit",
-                imageUrl: "https://picsum.photos/id/26/400/300"
-            },
-            {
-                id: Date.now() + 4,
-                title: "💖 Glitter Heart Tumbler",
-                description: "40oz insulated tumbler with sparkle gradient — keeps iced coffee magical.",
-                link: "https://example.com/product/tumbler",
-                imageUrl: "https://picsum.photos/id/30/400/300"
-            }
-        ];
-    }
-    
-    // Save to localStorage
-    function saveToLocalStorage() {
-        localStorage.setItem('anshu_wishlist', JSON.stringify(wishlistItems));
-    }
-    
-    // Helper: escape HTML
-    function escapeHtml(str) {
-        if (!str) return '';
-        return str.replace(/[&<>]/g, function(m) {
-            if (m === '&') return '&amp;';
-            if (m === '<') return '&lt;';
-            if (m === '>') return '&gt;';
-            return m;
-        });
-    }
-    
-    // Render public wishlist grid
-    function renderWishlist() {
-        const gridContainer = document.getElementById('productGrid');
-        if (!gridContainer) return;
-        
-        if (!wishlistItems || wishlistItems.length === 0) {
-            gridContainer.innerHTML = `<div class="empty-message"><i class="fas fa-gift"></i> no wishlist items yet — check back soon! 🌸</div>`;
-            return;
+
+        // Default cute products for first-time visitors
+
+
+        // Helper: escape HTML
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/[&<>]/g, function (m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            });
         }
-        
-        let cardsHTML = '';
-        for (let i = 0; i < wishlistItems.length; i++) {
-            const item = wishlistItems[i];
-            const safeTitle = escapeHtml(item.title);
-            const safeDesc = escapeHtml(item.description);
-            const safeLink = escapeHtml(item.link);
-            let imgUrl = item.imageUrl && item.imageUrl.trim() !== '' ? item.imageUrl : '';
-            
-            const imageHtml = imgUrl ? 
-                `<img src="${imgUrl}" alt="${safeTitle}" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'img-fallback\'><i class=\\'fas fa-image\\'></i><span style=\\'font-size:0.7rem;margin-top:8px;\\'>✨ ${safeTitle} ✨</span></div>';">` :
-                `<div class="img-fallback"><i class="fas fa-image"></i><span style="font-size:0.7rem;margin-top:8px;">✨ ${safeTitle} ✨</span></div>`;
-            
-            cardsHTML += `
+
+        // Render public wishlist grid
+        function renderWishlist() {
+            const gridContainer = document.getElementById('productGrid');
+            if (!gridContainer) return;
+
+            if (!wishlistItems || wishlistItems.length === 0) {
+                gridContainer.innerHTML = `<div class="empty-message"><i class="fas fa-gift"></i> no wishlist items yet — check back soon! 🌸</div>`;
+                return;
+            }
+
+            let cardsHTML = '';
+            for (let i = 0; i < wishlistItems.length; i++) {
+                const item = wishlistItems[i];
+                const safeTitle = escapeHtml(item.title);
+                const safeDesc = escapeHtml(item.description);
+                const safeLink = escapeHtml(item.link);
+                let imgUrl = item.imageUrl && item.imageUrl.trim() !== '' ? item.imageUrl : '';
+
+                const imageHtml = imgUrl ?
+                    `<img src="${imgUrl}" alt="${safeTitle}" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'img-fallback\'><i class=\\'fas fa-image\\'></i><span style=\\'font-size:0.7rem;margin-top:8px;\\'>✨ ${safeTitle} ✨</span></div>';">` :
+                    `<div class="img-fallback"><i class="fas fa-image"></i><span style="font-size:0.7rem;margin-top:8px;">✨ ${safeTitle} ✨</span></div>`;
+
+                cardsHTML += `
                 <div class="product-card">
                     <div class="card-img">
                         ${imageHtml}
@@ -631,169 +618,157 @@
                     </div>
                 </div>
             `;
+            }
+            gridContainer.innerHTML = cardsHTML;
         }
-        gridContainer.innerHTML = cardsHTML;
-    }
-    
-    // Admin: render product list inside admin panel (for delete)
-    function renderAdminProductList() {
-        const adminListContainer = document.getElementById('adminProductList');
-        if (!adminListContainer) return;
-        
-        if (wishlistItems.length === 0) {
-            adminListContainer.innerHTML = '<p style="text-align:center; color:#b46f8a;">✨ no products yet, add some! ✨</p>';
-            return;
-        }
-        
-        let listHtml = '';
-        for (let i = 0; i < wishlistItems.length; i++) {
-            const item = wishlistItems[i];
-            listHtml += `
+
+        // Admin: render product list inside admin panel (for delete)
+        function renderAdminProductList() {
+            const adminListContainer = document.getElementById('adminProductList');
+            if (!adminListContainer) return;
+
+            if (wishlistItems.length === 0) {
+                adminListContainer.innerHTML = '<p style="text-align:center; color:#b46f8a;">✨ no products yet, add some! ✨</p>';
+                return;
+            }
+
+            let listHtml = '';
+            for (let i = 0; i < wishlistItems.length; i++) {
+                const item = wishlistItems[i];
+                listHtml += `
                 <div class="admin-product-item">
                     <span><strong>${escapeHtml(item.title)}</strong></span>
                     <button class="delete-item-btn" data-id="${item.id}"><i class="fas fa-trash-alt"></i> remove</button>
                 </div>
             `;
-        }
-        adminListContainer.innerHTML = listHtml;
-        
-        // attach delete events
-        document.querySelectorAll('.delete-item-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const id = parseInt(btn.getAttribute('data-id'));
-                deleteProductById(id);
+            }
+            adminListContainer.innerHTML = listHtml;
+
+            // attach delete events
+            document.querySelectorAll('.delete-item-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = btn.getAttribute('data-id');
+                    deleteProductById(id);
+                });
             });
-        });
-    }
-    
-    function deleteProductById(id) {
-        wishlistItems = wishlistItems.filter(item => item.id !== id);
-        saveToLocalStorage();
-        renderWishlist();
-        renderAdminProductList();
-        showTemporaryMessage('🗑️ product removed successfully', '#b76e8e');
-    }
-    
-    function addNewProduct() {
-        const title = document.getElementById('productTitle').value.trim();
-        const link = document.getElementById('productLink').value.trim();
-        if (!title || !link) {
-            alert('🌸 please fill product name and link at least 🌸');
-            return;
         }
-        const desc = document.getElementById('productDesc').value.trim() || "a lovely addition to my wishlist ✨";
-        let imageUrl = document.getElementById('productImage').value.trim();
-        
-        const newProduct = {
-            id: Date.now(),
-            title: title,
-            description: desc,
-            link: link,
-            imageUrl: imageUrl
-        };
-        
-        wishlistItems.unshift(newProduct);
-        saveToLocalStorage();
-        renderWishlist();
-        renderAdminProductList();
-        
-        // clear form
-        document.getElementById('productTitle').value = '';
-        document.getElementById('productDesc').value = '';
-        document.getElementById('productLink').value = '';
-        document.getElementById('productImage').value = '';
-        
-        showTemporaryMessage('✨ new product added to wishlist! ✨', '#8fbc8f');
-    }
-    
-    function showTemporaryMessage(msg, color) {
-        const notif = document.createElement('div');
-        notif.innerText = msg;
-        notif.style.position = 'fixed';
-        notif.style.bottom = '20px';
-        notif.style.left = '50%';
-        notif.style.transform = 'translateX(-50%)';
-        notif.style.backgroundColor = color;
-        notif.style.color = 'white';
-        notif.style.padding = '10px 20px';
-        notif.style.borderRadius = '40px';
-        notif.style.fontWeight = 'bold';
-        notif.style.zIndex = '1001';
-        notif.style.fontFamily = 'Quicksand, sans-serif';
-        notif.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
-        document.body.appendChild(notif);
-        setTimeout(() => notif.remove(), 2500);
-    }
-    
-    // ---------- HIDDEN ADMIN PANEL LOGIC ----------
-    const adminOverlay = document.getElementById('adminOverlay');
-    const secretTrigger = document.getElementById('secretTrigger');
-    const passwordPromptDiv = document.getElementById('passwordPrompt');
-    const adminDashboardDiv = document.getElementById('adminDashboard');
-    const submitPasswordBtn = document.getElementById('submitPasswordBtn');
-    const adminPasswordInput = document.getElementById('adminPassword');
-    const passwordErrorSpan = document.getElementById('passwordError');
-    
-    // Open panel via secret click (anywhere on hidden trigger)
-    function openAdminPanel() {
-        adminOverlay.style.display = 'flex';
-        // Reset to password mode
-        passwordPromptDiv.style.display = 'block';
-        adminDashboardDiv.style.display = 'none';
-        adminPasswordInput.value = '';
-        passwordErrorSpan.innerText = '';
-        // Reset any leftover admin list render later
-    }
-    
-    secretTrigger.addEventListener('click', openAdminPanel);
-    
-    // Close panel
-    function closeAdminPanel() {
-        adminOverlay.style.display = 'none';
-        passwordPromptDiv.style.display = 'block';
-        adminDashboardDiv.style.display = 'none';
-    }
-    
-    document.getElementById('closeAdminBtn')?.addEventListener('click', closeAdminPanel);
-    document.getElementById('closeAdminDashboardBtn')?.addEventListener('click', closeAdminPanel);
-    
-    // Password verification
-    function verifyPassword() {
-        const enteredPass = adminPasswordInput.value;
-        if (enteredPass === SECRET_PASSWORD) {
-            // correct password - show dashboard
-            passwordPromptDiv.style.display = 'none';
-            adminDashboardDiv.style.display = 'block';
-            renderAdminProductList(); // load current products for admin
-            passwordErrorSpan.innerText = '';
-        } else {
-            passwordErrorSpan.innerText = '🔒 incorrect password · access denied';
+
+        async function deleteProductById(id) {
+            await db.collection("wishlist").doc(id).delete();
+            loadData();
+        }
+
+        async function addNewProduct() {
+            const title = document.getElementById('productTitle').value.trim();
+            const link = document.getElementById('productLink').value.trim();
+
+            if (!title || !link) {
+                alert("🌸 fill required fields 🌸");
+                return;
+            }
+
+            await db.collection("wishlist").add({
+                title: title,
+                description: document.getElementById('productDesc').value,
+                link: link,
+                imageUrl: document.getElementById('productImage').value
+            });
+
+            loadData();
+            document.getElementById('productTitle').value = '';
+            document.getElementById('productDesc').value = '';
+            document.getElementById('productLink').value = '';
+            document.getElementById('productImage').value = '';
+        }
+        function showTemporaryMessage(msg, color) {
+            const notif = document.createElement('div');
+            notif.innerText = msg;
+            notif.style.position = 'fixed';
+            notif.style.bottom = '20px';
+            notif.style.left = '50%';
+            notif.style.transform = 'translateX(-50%)';
+            notif.style.backgroundColor = color;
+            notif.style.color = 'white';
+            notif.style.padding = '10px 20px';
+            notif.style.borderRadius = '40px';
+            notif.style.fontWeight = 'bold';
+            notif.style.zIndex = '1001';
+            notif.style.fontFamily = 'Quicksand, sans-serif';
+            notif.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+            document.body.appendChild(notif);
+            setTimeout(() => notif.remove(), 2500);
+        }
+
+        // ---------- HIDDEN ADMIN PANEL LOGIC ----------
+        const adminOverlay = document.getElementById('adminOverlay');
+        const secretTrigger = document.getElementById('secretTrigger');
+        const passwordPromptDiv = document.getElementById('passwordPrompt');
+        const adminDashboardDiv = document.getElementById('adminDashboard');
+        const submitPasswordBtn = document.getElementById('submitPasswordBtn');
+        const adminPasswordInput = document.getElementById('adminPassword');
+        const passwordErrorSpan = document.getElementById('passwordError');
+
+        // Open panel via secret click (anywhere on hidden trigger)
+        function openAdminPanel() {
+            adminOverlay.style.display = 'flex';
+            // Reset to password mode
+            passwordPromptDiv.style.display = 'block';
+            adminDashboardDiv.style.display = 'none';
             adminPasswordInput.value = '';
+            passwordErrorSpan.innerText = '';
+            // Reset any leftover admin list render later
         }
-    }
-    
-    submitPasswordBtn.addEventListener('click', verifyPassword);
-    adminPasswordInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') verifyPassword();
-    });
-    
-    // Add product button event
-    document.getElementById('addProductBtn')?.addEventListener('click', addNewProduct);
-    
-    // Close overlay when clicking outside panel content
-    adminOverlay.addEventListener('click', (e) => {
-        if (e.target === adminOverlay) {
-            closeAdminPanel();
+
+        secretTrigger.addEventListener('click', openAdminPanel);
+
+        // Close panel
+        function closeAdminPanel() {
+            adminOverlay.style.display = 'none';
+            passwordPromptDiv.style.display = 'block';
+            adminDashboardDiv.style.display = 'none';
         }
-    });
-    
-    // Initial load
-    loadData();
-    
-    // Small hint in console only for you (no one sees unless dev tools open)
-    console.log('%c🌸 Anshu\'s Wishlist — hidden admin panel active! 🌸', 'color: #c44b7c; font-size: 14px;');
-    console.log('%c💡 SECRET: click the invisible area at bottom-right corner of the page (tiny hidden spot) to open password-protected admin panel.', 'color: #b35d7e;');
-    console.log('%c🔑 default password: "anshika123" (you can change it in the script: SECRET_PASSWORD variable)', 'color: #e36f9a;');
-</script>
+
+        document.getElementById('closeAdminBtn')?.addEventListener('click', closeAdminPanel);
+        document.getElementById('closeAdminDashboardBtn')?.addEventListener('click', closeAdminPanel);
+
+        // Password verification
+        function verifyPassword() {
+            const enteredPass = adminPasswordInput.value;
+            if (enteredPass === SECRET_PASSWORD) {
+                // correct password - show dashboard
+                passwordPromptDiv.style.display = 'none';
+                adminDashboardDiv.style.display = 'block';
+                renderAdminProductList(); // load current products for admin
+                passwordErrorSpan.innerText = '';
+            } else {
+                passwordErrorSpan.innerText = '🔒 incorrect password · access denied';
+                adminPasswordInput.value = '';
+            }
+        }
+
+        submitPasswordBtn.addEventListener('click', verifyPassword);
+        adminPasswordInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') verifyPassword();
+        });
+
+        // Add product button event
+        document.getElementById('addProductBtn')?.addEventListener('click', addNewProduct);
+
+        // Close overlay when clicking outside panel content
+        adminOverlay.addEventListener('click', (e) => {
+            if (e.target === adminOverlay) {
+                closeAdminPanel();
+            }
+        });
+
+        // Initial load
+        loadData();
+
+        // Small hint in console only for you (no one sees unless dev tools open)
+        console.log('%c🌸 Anshu\'s Wishlist — hidden admin panel active! 🌸', 'color: #c44b7c; font-size: 14px;');
+        console.log('%c💡 SECRET: click the invisible area at bottom-right corner of the page (tiny hidden spot) to open password-protected admin panel.', 'color: #b35d7e;');
+        console.log('%c🔑 default password: "anshika123" (you can change it in the script: SECRET_PASSWORD variable)', 'color: #e36f9a;');
+    </script>
 </body>
+
 </html>
